@@ -4,10 +4,14 @@ import java.util.stream.IntStream;
 
 public class AlgorithmQuickSort extends AlgorithmAbstract{
 
+
+    //constructor with variable
     public AlgorithmQuickSort(int[] arr){
         quickSort(arr, 0, arr.length-1);
         this.arr = arr.clone();
     }
+
+    //constructor with variable
     public AlgorithmQuickSort(){
         arr = IntStream.rangeClosed(0, 499).toArray();
         quickSort(arr, 0, arr.length-1);
