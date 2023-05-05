@@ -30,7 +30,6 @@ public class Main {
                 + " Count:" + count);
     }
 
-
     //function print in console already shuffled array
     //initialise sorting algorithm class and setting array in
     //getting array from class

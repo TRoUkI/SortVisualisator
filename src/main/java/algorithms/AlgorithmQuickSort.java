@@ -49,7 +49,6 @@ public class AlgorithmQuickSort extends AlgorithmAbstract{
         // the right position of pivot found so far
         for(int j = low; j <= high; j++){
             count++;
-            System.out.println(count);
             // If current element is smaller than the pivot
             if(arr[j]<pivot){
                 // Increment index of smaller element
@@ -59,12 +58,5 @@ public class AlgorithmQuickSort extends AlgorithmAbstract{
         }
         swap(arr, i+1, high);
         return (i+1);
-    }
-
-    // A utility function to swap two elements
-    public void swap(int[] arr, int a, int b){
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
     }
 }
