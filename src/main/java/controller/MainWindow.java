@@ -22,6 +22,6 @@ public class MainWindow {
     MainWindow(){
         AlgorithmAbstract aa[] = new AlgorithmAbstract[5];
         AlgorithmAbstract a = new AlgorithmMyTest();
-        algorithm_list.
+//        algorithm_list.
     }
 }

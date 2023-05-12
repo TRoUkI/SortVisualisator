@@ -13,12 +13,6 @@ import main.java.algorithms.AlgorithmMyTest;
 public class SortingVisualisationApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        ScrollPane sp = new ScrollPane();
-        sp.fitToWidthProperty().set(true);
-        sp.fitToHeightProperty().set(true);
-
-        StackPane root = new StackPane();
-        sp.setContent(root);
 
         Scene scene = new Scene(sp, 1100, 600);
 
