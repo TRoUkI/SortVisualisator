@@ -6,8 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import main.java.algorithms.AlgorithmAbstract;
 import main.java.algorithms.AlgorithmMyTest;
+import main.java.algorithms.AlgorithmQuickSort;
 
-public class MainWindow {
+import java.util.ArrayList;
+
+public class MainWindowController {
     @FXML
     private Button start_btn;
 
@@ -19,9 +22,13 @@ public class MainWindow {
     @FXML
     private ListView<?> algorithm_list;
 
-    MainWindow(){
-        AlgorithmAbstract aa[] = new AlgorithmAbstract[5];
-        AlgorithmAbstract a = new AlgorithmMyTest();
-//        algorithm_list.
+
+
+    ArrayList<AlgorithmAbstract> algorithmArray;
+
+    public MainWindowController(){
+        algorithmArray = new ArrayList<>();
+        algorithmArray.add(new AlgorithmMyTest());
+        algorithmArray.add(new AlgorithmQuickSort());
     }
 }
