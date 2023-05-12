@@ -1,11 +1,10 @@
 package main.java.utility;
 
-import main.java.algorithms.AlgorithmMyTest;
 import main.java.algorithms.AlgorithmQuickSort;
 
 import java.util.Arrays;
 import java.util.Random;
-public class Main {
+public class InputArrayClass {
     int[] inputDataArr; //input array
     int[] shuffledInputDataArr; //shuffled input array
     int[] sortedAfterShuffleInputDataArr; //sorted after shuffle input array
@@ -17,7 +16,7 @@ public class Main {
     // initialise array sort function
     //output LOG info
 
-    public Main(int size){
+    public InputArrayClass(int size){
         inputDataArr = new int[size];
         fillInputArr();
         shuffledInputDataArr = inputDataArr.clone();

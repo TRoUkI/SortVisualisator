@@ -1,11 +1,12 @@
 package test.java;
 
+import main.java.utility.InputArrayClass;
 import org.junit.jupiter.api.Test;
 
-class MainTest {
+class InputArrayClassTest {
     @Test
     public void ConstructorTest(){
-        new Main(500);
+        new InputArrayClass(500);
     }
 
 }
