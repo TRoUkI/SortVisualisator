@@ -1,6 +1,5 @@
 package test.java;
 
-import main.java.Main;
 import org.junit.jupiter.api.Test;
 
 class MainTest {

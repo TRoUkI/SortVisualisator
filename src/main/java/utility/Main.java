@@ -1,4 +1,4 @@
-package main.java;
+package main.java.utility;
 
 import main.java.algorithms.AlgorithmMyTest;
 import main.java.algorithms.AlgorithmQuickSort;
