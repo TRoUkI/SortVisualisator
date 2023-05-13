@@ -19,7 +19,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <ListView fx:id="algorithm_list" layoutX="279.0" layoutY="-65.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ListView fx:id="algorithm_listViewFX" layoutX="279.0" layoutY="-65.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -31,7 +31,7 @@
             </AnchorPane>
          </bottom>
          <center>
-            <AnchorPane style="-fx-background-color: #537188;" BorderPane.alignment="CENTER" />
+            <AnchorPane fx:id="elementField" style="-fx-background-color: #537188;" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>

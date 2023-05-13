@@ -2,7 +2,7 @@ package main.java.algorithms;
 
 import java.util.stream.IntStream;
 
-public class AlgorithmQuickSort extends AlgorithmAbstract{
+public class AlgorithmQuickSort extends AlgorithmAbstractFX{
 
 
     //constructor with variable

@@ -1,5 +1,6 @@
 package main.java.algorithms;
 
+import javafx.scene.Node;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -56,5 +57,13 @@ public abstract class AlgorithmAbstractFX {
     //getter for arr array
     public int[] getArr() {
         return arr;
+    }
+
+    public String getName(){
+        return this.getClass().getSimpleName();
+    }
+
+    public Pane getPane() {
+        return box;
     }
 }

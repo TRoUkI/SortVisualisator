@@ -2,7 +2,7 @@ package main.java.algorithms;
 
 import java.util.stream.IntStream;
 
-public final class AlgorithmMyTest extends AlgorithmAbstract{
+public final class AlgorithmMyTest extends AlgorithmAbstractFX{
     private boolean isSorted = false;
 
 
