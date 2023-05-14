@@ -8,9 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import main.java.algorithms.AlgorithmAbstractFX;
-import main.java.algorithms.AlgorithmMyTest;
-import main.java.algorithms.AlgorithmQuickSort;
+import main.java.algorithmsFX.AlgorithmAbstractFX;
+import main.java.algorithmsFX.AlgorithmMyTestFX;
+import main.java.algorithmsFX.AlgorithmQuickSortFX;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,19 +23,25 @@ public class MainWindowController implements Initializable {
     @FXML
     private Button start_btn;
 
+    //button for start sorting process
+    //check if chosen algorithm notNull
+    //clear previous data
+    //add pane with rectangles
     @FXML
     void press_start_btn(ActionEvent event) {
         if(currentAlgorithm==null){
             return;
         }
-        elementField.getChildren().add(getAlgorithmId(currentAlgorithm).getPane());
+        elementField.getChildren().clear();
+        elementField.getChildren().add(currentAlgorithm.getPane());
     }
 
     @FXML
     private ListView<String> algorithm_listViewFX;
-    String currentAlgorithm;
 
+    String currentAlgorithmStr;
     ArrayList<AlgorithmAbstractFX> algorithmArray= new ArrayList<>();
+    AlgorithmAbstractFX currentAlgorithm;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,16 +53,17 @@ public class MainWindowController implements Initializable {
         algorithm_listViewFX.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                currentAlgorithm = algorithm_listViewFX.getSelectionModel().getSelectedItem();
+                currentAlgorithmStr = algorithm_listViewFX.getSelectionModel().getSelectedItem();
+                currentAlgorithm = getAlgorithmByName(currentAlgorithmStr);
             }
         });
     }
 
     private void addAlgorithms() {
-        algorithmArray.add(new AlgorithmMyTest());
-        algorithmArray.add(new AlgorithmQuickSort());
+        algorithmArray.add(new AlgorithmMyTestFX());
+        algorithmArray.add(new AlgorithmQuickSortFX());
     }
-    private AlgorithmAbstractFX getAlgorithmId(String algName){
+    private AlgorithmAbstractFX getAlgorithmByName(String algName){
         for(AlgorithmAbstractFX oneAlgorithm: algorithmArray){
             if(oneAlgorithm.getName()==algName){
                 return oneAlgorithm;

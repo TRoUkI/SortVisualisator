@@ -1,37 +1,37 @@
-package main.java.algorithms;
+package main.java.algorithmsFX;
 
 import java.util.stream.IntStream;
 
-public class AlgorithmQuickSort extends AlgorithmAbstract{
+public class AlgorithmQuickSortFX extends AlgorithmAbstractFX {
 
 
     //constructor with variable
-    public AlgorithmQuickSort(int[] arr){
-        quickSort(arr, 0, arr.length-1);
-        this.arr = arr.clone();
+    public AlgorithmQuickSortFX(int[] arrNumbers){
+        quickSort(arrNumbers, 0, arrNumbers.length-1);
+        this.arrNumbers = arrNumbers.clone();
     }
 
     //constructor with variable
-    public AlgorithmQuickSort(){
-        arr = IntStream.rangeClosed(0, 499).toArray();
-        quickSort(arr, 0, arr.length-1);
+    public AlgorithmQuickSortFX(){
+        arrNumbers = IntStream.rangeClosed(0, 499).toArray();
+        quickSort(arrNumbers, 0, arrNumbers.length-1);
     }
 
     // The main function that implements QuickSort
-    // arr[] --> Array to be sorted,
+    // arrNumbers[] --> Array to be sorted,
     // low --> Starting index,
     // high --> Ending index
-    public void quickSort(int [] arr, int low, int high)  {
+    public void quickSort(int [] arrNumbers, int low, int high)  {
 
         if(low < high){
-            // pi is partitioning index, arr[p]
+            // pi is partitioning index, arrNumbers[p]
             // is now at right place
-            int pi = partition(arr, low, high);
+            int pi = partition(arrNumbers, low, high);
 
             // Separately sort elements before
             // partition and after partition
-            quickSort(arr, low, pi-1);
-            quickSort(arr, pi + 1, high);
+            quickSort(arrNumbers, low, pi-1);
+            quickSort(arrNumbers, pi + 1, high);
         }
     }
 
@@ -39,8 +39,8 @@ public class AlgorithmQuickSort extends AlgorithmAbstract{
     // places the pivot element at its correct position
     // in sorted array, and places all smaller to left
     // of pivot and all greater elements to right of pivot
-    public int partition(int[] arr, int low, int high){
-        int pivot = arr[high];
+    public int partition(int[] arrNumbers, int low, int high){
+        int pivot = arrNumbers[high];
 
         // Choosing the pivot
         int i = low-1;
@@ -50,13 +50,13 @@ public class AlgorithmQuickSort extends AlgorithmAbstract{
         for(int j = low; j <= high; j++){
             count++;
             // If current element is smaller than the pivot
-            if(arr[j]<pivot){
+            if(arrNumbers[j]<pivot){
                 // Increment index of smaller element
                 i++;
-                swap(arr, i, j);
+                swap(arrNumbers, i, j);
             }
         }
-        swap(arr, i+1, high);
+        swap(arrNumbers, i+1, high);
         return (i+1);
     }
 }
