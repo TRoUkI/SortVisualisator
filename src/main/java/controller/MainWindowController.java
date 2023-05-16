@@ -11,12 +11,21 @@ import javafx.scene.layout.AnchorPane;
 import main.java.algorithmsFX.AlgorithmAbstractFX;
 import main.java.algorithmsFX.AlgorithmMyTestFX;
 import main.java.algorithmsFX.AlgorithmQuickSortFX;
+import main.java.utility.ButtonTask;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
+
+
+    String currentAlgorithmStr;
+    ArrayList<AlgorithmAbstractFX> algorithmArray= new ArrayList<>();
+    AlgorithmAbstractFX currentAlgorithm;
+
+    private ButtonTask buttonTask;
+
     @FXML
     private AnchorPane elementField;
 
@@ -32,16 +41,30 @@ public class MainWindowController implements Initializable {
         if(currentAlgorithm==null){
             return;
         }
+        invokeStartSorting();
+    }
+
+    private void invokeStartSorting() {
         elementField.getChildren().clear();
         elementField.getChildren().add(currentAlgorithm.getPane());
+        buttonTask = new ButtonTask(currentAlgorithm);
+
+        Thread th = new Thread(buttonTask);
+        th.setDaemon(true);
+        th.start();
     }
+//        new ButtonService(currentAlgorithm).start();
+//        Thread thread = new Thread(){
+//            @Override
+//            public void run() {
+        //                currentAlgorithm.AlgorithmBody();
+
+//            }
+//        };
+//        thread.start();
 
     @FXML
     private ListView<String> algorithm_listViewFX;
-
-    String currentAlgorithmStr;
-    ArrayList<AlgorithmAbstractFX> algorithmArray= new ArrayList<>();
-    AlgorithmAbstractFX currentAlgorithm;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,3 +95,4 @@ public class MainWindowController implements Initializable {
         return null;
     }
 }
+
