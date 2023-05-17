@@ -1,52 +1,28 @@
 package main.java.algorithms;
 
-import java.util.stream.IntStream;
-
 public final class AlgorithmMyTest extends AlgorithmAbstract{
     private boolean isSorted = false;
 
-
-    //constructor with variable
-    public AlgorithmMyTest(int[] arr){
+    @Override
+    //function that start algorithm calculation
+    //and print result
+    public void AlgorithmBody(){
         while(!isSorted) {
-            for (int i = 0; i < arr.length - 1; i++) { //swap the two elements(el) if el. i+1 less than el. i
+            for (int i = 0; i < arrNumbers.length - 1; i++) { //swap the two elements(el) if el. i+1 less than el. i
                 count++;
-                if (arr[i] > arr[i + 1]) {
-                    swap(arr, i, i+1);
+                if (arrNumbers[i] > arrNumbers[i + 1]) {
+                    swap(arrNumbers, i, i+1);
                 }
             }
             isSorted = true;
-            for (int i = 0; i<arr.length-1; i++) { //check if array is sorted
+            for (int i = 0; i<arrNumbers.length-1; i++) { //check if array is sorted
                 count++;
-                if(arr[i] > arr[i + 1]){
+                if(arrNumbers[i] > arrNumbers[i + 1]){
                     isSorted = false;
                     break;
                 }
             }
         }
-        this.arr = arr.clone();
-    }
-
-    //constructor withOut variable
-    public AlgorithmMyTest(){
-        arr = IntStream.rangeClosed(0, 499).toArray();
-        while(!isSorted) {
-            for (int i = 0; i < arr.length - 1; i++) {
-                count++;
-                if (arr[i] > arr[i + 1]) {
-                    int temp = arr[i];
-                    arr[i] = arr[i + 1];
-                    arr[i + 1] = temp;
-                }
-            }
-            isSorted = true;
-            for (int i = 0; i<arr.length-1; i++) {
-                count++;
-                if(arr[i] > arr[i + 1]){
-                    isSorted = false;
-                    break;
-                }
-            }
-        }
+        getConsoleArray();
     }
 }
