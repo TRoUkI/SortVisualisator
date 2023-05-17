@@ -1,5 +1,5 @@
 # SortVisualisator
-A simple sorting visualization app written in Java/JavaFX
+A sorting visualization app written in Java/JavaFX
 
 ![image](https://github.com/TRoUkI/SortVisualisator/assets/47295089/1bd9866d-8468-4b44-8f0d-b404f61c78e1)
 
