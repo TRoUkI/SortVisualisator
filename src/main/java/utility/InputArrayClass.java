@@ -47,22 +47,4 @@ public class InputArrayClass {
     public int[] getArray() {
         return shuffledInputDataArr;
     }
-    /*
-    function print in console already shuffled array
-    initialise sorting algorithm class and setting array in
-    getting array from class
-    getting count from class
-    printing in console sorted array
-        private void sortArray(int[] arr) {
-            System.out.println(Arrays.toString(arr));
-
-           AlgorithmMyTest al1MyTest = new AlgorithmMyTest(arr);
-            AlgorithmQuickSort al1MyTest = new AlgorithmQuickSort(arr);
-
-            sortedAfterShuffleInputDataArr = al1MyTest.getArr();
-            count = al1MyTest.getCount();
-
-            System.out.println(Arrays.toString(sortedAfterShuffleInputDataArr));
-        }
-    */
 }

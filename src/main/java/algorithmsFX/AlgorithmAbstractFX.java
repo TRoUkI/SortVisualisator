@@ -65,7 +65,7 @@ public abstract class AlgorithmAbstractFX {
 
 
 
-    // A utility function to swap two elements
+    // A utility function to swap two elements, wait a time between setting color, calculating and returning color
     protected void swap(RectangleClass[] arr, int a, int b){
         arr[a].setFill(Color.PINK);
         arr[b].setFill(Color.BLUE);

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import main.java.algorithmsFX.AlgorithmAbstractFX;
 import main.java.algorithmsFX.AlgorithmMyTestFX;
@@ -27,7 +28,21 @@ public class MainWindowController implements Initializable {
     private ButtonTask buttonTask;
 
     @FXML
+    private TextField speedField;
+
+    @FXML
     private AnchorPane elementField;
+
+    @FXML
+    private Button pause_btn;
+
+    public MainWindowController() {
+    }
+
+    @FXML
+    void pause_btn_action(ActionEvent event) throws InterruptedException {
+
+    }
 
     @FXML
     private Button start_btn;
@@ -37,7 +52,7 @@ public class MainWindowController implements Initializable {
     //clear previous data
     //add pane with rectangles
     @FXML
-    void press_start_btn(ActionEvent event) {
+    void start_btn_action(ActionEvent event) {
         if(currentAlgorithm==null){
             return;
         }
@@ -45,11 +60,6 @@ public class MainWindowController implements Initializable {
     }
 
     private void invokeStartSorting() {
-//        if (th != null) {
-//            if(th.isAlive()) {
-//                th.interrupt();
-//            }
-//        }
         elementField.getChildren().clear();
         elementField.getChildren().add(currentAlgorithm.getPane());
         buttonTask = new ButtonTask(currentAlgorithm);
