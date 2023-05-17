@@ -24,7 +24,7 @@ public class InputArrayClass {
     //function for filling array in numbers with step 1 for array length
     private void fillInputArr() {
         for(int i = 0; i<inputDataArr.length; i++){
-            inputDataArr[i] = i+1;
+            inputDataArr[i] = i;
         }
     }
 

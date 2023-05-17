@@ -12,7 +12,7 @@ public class SortingVisualisationApp extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/fxml/MainWindow.fxml"));
         Scene scene = new Scene(root, 1000, 600);
         stage.setScene(scene);
-        stage.setResizable(false);
+//        stage.setResizable(false);
         stage.show();
     }
 

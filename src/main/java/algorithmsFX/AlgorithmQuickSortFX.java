@@ -1,37 +1,31 @@
 package main.java.algorithmsFX;
 
-import java.util.stream.IntStream;
+import javafx.scene.paint.Color;
+import main.java.utility.RectangleClass;
 
 public class AlgorithmQuickSortFX extends AlgorithmAbstractFX {
 
-
-    //constructor with variable
-    public AlgorithmQuickSortFX(int[] arrNumbers){
-        quickSort(arrNumbers, 0, arrNumbers.length-1);
-        this.arrNumbers = arrNumbers.clone();
-    }
-
-    //constructor with variable
-    public AlgorithmQuickSortFX(){
-        arrNumbers = IntStream.rangeClosed(0, 499).toArray();
-        quickSort(arrNumbers, 0, arrNumbers.length-1);
+    @Override
+    public void AlgorithmBody() {
+        super.AlgorithmBody();
+        quickSort(rectangleArray, 0, rectangleArray.length-1);
     }
 
     // The main function that implements QuickSort
-    // arrNumbers[] --> Array to be sorted,
+    // rectangle[] --> Array to be sorted,
     // low --> Starting index,
     // high --> Ending index
-    public void quickSort(int [] arrNumbers, int low, int high)  {
+    public void quickSort(RectangleClass [] rectangle, int low, int high)  {
 
         if(low < high){
-            // pi is partitioning index, arrNumbers[p]
+            // pi is partitioning index, rectangle[p]
             // is now at right place
-            int pi = partition(arrNumbers, low, high);
+            int pi = partition(rectangle, low, high);
 
             // Separately sort elements before
             // partition and after partition
-            quickSort(arrNumbers, low, pi-1);
-            quickSort(arrNumbers, pi + 1, high);
+            quickSort(rectangle, low, pi-1);
+            quickSort(rectangle, pi + 1, high);
         }
     }
 
@@ -39,8 +33,9 @@ public class AlgorithmQuickSortFX extends AlgorithmAbstractFX {
     // places the pivot element at its correct position
     // in sorted array, and places all smaller to left
     // of pivot and all greater elements to right of pivot
-    public int partition(int[] arrNumbers, int low, int high){
-        int pivot = arrNumbers[high];
+    public int partition(RectangleClass[] rectangle, int low, int high){
+        RectangleClass pivot = rectangle[high];
+        pivot.setFill(Color.GREEN);
 
         // Choosing the pivot
         int i = low-1;
@@ -50,13 +45,14 @@ public class AlgorithmQuickSortFX extends AlgorithmAbstractFX {
         for(int j = low; j <= high; j++){
             count++;
             // If current element is smaller than the pivot
-            if(arrNumbers[j]<pivot){
+            if(rectangle[j].lessThan(pivot)){
                 // Increment index of smaller element
                 i++;
-                swap(arrNumbers, i, j);
+                swap(rectangle, i, j);
             }
         }
-        swap(arrNumbers, i+1, high);
+        swap(rectangle, i+1, high);
+        pivot.setStandartColor();
         return (i+1);
     }
 }

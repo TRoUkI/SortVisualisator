@@ -10,8 +10,7 @@ public class ButtonTask extends Task {
     }
 
     @Override
-    protected Object call() throws Exception {
-        System.out.println(1);
+    protected Object call() {
         currentAlgorithm.AlgorithmBody();
         return currentAlgorithm;
     }

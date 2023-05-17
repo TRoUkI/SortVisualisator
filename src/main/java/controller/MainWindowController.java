@@ -19,11 +19,11 @@ import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
 
-
     String currentAlgorithmStr;
     ArrayList<AlgorithmAbstractFX> algorithmArray= new ArrayList<>();
     AlgorithmAbstractFX currentAlgorithm;
 
+    Thread th;
     private ButtonTask buttonTask;
 
     @FXML
@@ -45,23 +45,23 @@ public class MainWindowController implements Initializable {
     }
 
     private void invokeStartSorting() {
+//        if (th != null) {
+//            if(th.isAlive()) {
+//                th.interrupt();
+//            }
+//        }
         elementField.getChildren().clear();
         elementField.getChildren().add(currentAlgorithm.getPane());
         buttonTask = new ButtonTask(currentAlgorithm);
-
-        Thread th = new Thread(buttonTask);
+        try { //this part for recreating currentAlgorithm every time when this function initialised
+            currentAlgorithm = currentAlgorithm.getClass().newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        th = new Thread(buttonTask);
         th.setDaemon(true);
         th.start();
     }
-//        new ButtonService(currentAlgorithm).start();
-//        Thread thread = new Thread(){
-//            @Override
-//            public void run() {
-        //                currentAlgorithm.AlgorithmBody();
-
-//            }
-//        };
-//        thread.start();
 
     @FXML
     private ListView<String> algorithm_listViewFX;
@@ -88,7 +88,7 @@ public class MainWindowController implements Initializable {
     }
     private AlgorithmAbstractFX getAlgorithmByName(String algName){
         for(AlgorithmAbstractFX oneAlgorithm: algorithmArray){
-            if(oneAlgorithm.getName()==algName){
+            if(oneAlgorithm.getName().equals(algName)){
                 return oneAlgorithm;
             }
         }
