@@ -1,5 +1,6 @@
 package main.java.algorithmsFX;
 
+import javafx.concurrent.Task;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -7,15 +8,18 @@ import main.java.utility.InputArrayClass;
 import main.java.utility.RectangleClass;
 
 //Abstract class is responsible for base function/variable for every Algorithm
-public abstract class AlgorithmAbstractFX {
+public abstract class AlgorithmAbstractFX extends Task<AlgorithmAbstractFX> {
     protected int [] arrNumbers; //main array for sort
     protected int count = 0; //for amount of chosen operation
 
     //JavaFX obj
     Pane box = new Pane(); //Main pane that set all elements and after will be set in main program
     RectangleClass[] rectangleArray;
-    private final long time = 500; //full delay for swap function
-    private final int size = 30; //size of the array
+
+    private final int size = 50;//size of the array
+
+    private volatile int time = 100; //full delay for swap function
+    private volatile boolean paused = false;
 
     //constructor for all Algorithms
     //get shuffled array of numbers
@@ -31,6 +35,12 @@ public abstract class AlgorithmAbstractFX {
         rectangleArray = new RectangleClass[arrNumbers.length];
         fillRectangleArray(arrNumbers, rectangleArray);
         box.getChildren().addAll(rectangleArray);
+    }
+
+    @Override
+    protected AlgorithmAbstractFX call() throws Exception {
+        AlgorithmBody();
+        return this;
     }
 
     public void AlgorithmBody(){    }
@@ -57,13 +67,9 @@ public abstract class AlgorithmAbstractFX {
         rectangle.correctRectanglePlacement(box);
 
         rectangle.setStandartColor();
-        rectangle.setStroke(Color.web("#537188"));
-        rectangle.setStyle("-fx-stroke-type:inside; -fx-stroke-width: 1;");
 
         return(rectangle);
     }
-
-
 
     // A utility function to swap two elements, wait a time between setting color, calculating and returning color
     protected void swap(RectangleClass[] arr, int a, int b){
@@ -96,11 +102,24 @@ public abstract class AlgorithmAbstractFX {
         return box;
     }
 
+    public void setPaused(boolean paused) {
+        this.paused = paused;
+    }
+
+    protected void isPaused(){
+        while (paused) {
+            Thread.onSpinWait();
+        }
+    }
+
     public void getConsoleArray() {
         String st = "";
         for(RectangleClass rectangleClass : rectangleArray){
             st += " "+rectangleClass.getIntId();
         }
         System.out.println(st);
+    }
+    public void setTime(int time) {
+        this.time = time;
     }
 }

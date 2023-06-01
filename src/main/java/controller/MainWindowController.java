@@ -12,8 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import main.java.algorithmsFX.AlgorithmAbstractFX;
 import main.java.algorithmsFX.AlgorithmMyTestFX;
 import main.java.algorithmsFX.AlgorithmQuickSortFX;
-import main.java.utility.ButtonTask;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -23,9 +23,7 @@ public class MainWindowController implements Initializable {
     String currentAlgorithmStr;
     ArrayList<AlgorithmAbstractFX> algorithmArray= new ArrayList<>();
     AlgorithmAbstractFX currentAlgorithm;
-
     Thread th;
-    private ButtonTask buttonTask;
 
     @FXML
     private TextField speedField;
@@ -36,12 +34,24 @@ public class MainWindowController implements Initializable {
     @FXML
     private Button pause_btn;
 
-    public MainWindowController() {
+    @FXML
+    void pause_btn_action(ActionEvent event) {
+        if(pause_btn.getText().equals("PAUSE")){
+            currentAlgorithm.setPaused(true);
+            pause_btn.setText("RESUME");
+            return;
+        }
+        currentAlgorithm.setPaused(false);
+        pause_btn.setText("PAUSE");
     }
 
     @FXML
-    void pause_btn_action(ActionEvent event) throws InterruptedException {
+    private Button set_btn;
 
+    @FXML
+    void set_btn_action(ActionEvent event) {
+        int i = Integer.parseInt(speedField.getText());
+        currentAlgorithm.setTime(i);
     }
 
     @FXML
@@ -49,26 +59,41 @@ public class MainWindowController implements Initializable {
 
     //button for start sorting process
     //check if chosen algorithm notNull
+    //nulling previous thread iif exist
+    //canceling previous calculation
     //clear previous data
-    //add pane with rectangles
+    //recreating currentAlgorithm for initialisation constructor if needed
+    //invoke start sorting with current algorithm
     @FXML
-    void start_btn_action(ActionEvent event) {
+    void start_btn_action(ActionEvent event) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         if(currentAlgorithm==null){
             return;
         }
-        invokeStartSorting();
-    }
-
-    private void invokeStartSorting() {
-        elementField.getChildren().clear();
-        elementField.getChildren().add(currentAlgorithm.getPane());
-        buttonTask = new ButtonTask(currentAlgorithm);
-        try { //this part for recreating currentAlgorithm every time when this function initialised
-            currentAlgorithm = currentAlgorithm.getClass().newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        if(th != null){
+            th.interrupt();
+            th = null;
         }
-        th = new Thread(buttonTask);
+        currentAlgorithm.cancel();
+        elementField.getChildren().clear();
+        currentAlgorithm = currentAlgorithm.getClass().getConstructor().newInstance();
+        invokeStartSorting(currentAlgorithm);
+    }
+    //add pane with rectangles
+    //start new thread with overwritten interrupt() function witch call canceling currentAlgorithm
+    private void invokeStartSorting(AlgorithmAbstractFX currentAlgorithm) {
+        elementField.getChildren().add(currentAlgorithm.getPane());
+        th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                currentAlgorithm.run();
+            }
+        }){
+            @Override
+            public void interrupt() {
+                super.interrupt();
+                currentAlgorithm.cancel();
+            }
+        };
         th.setDaemon(true);
         th.start();
     }
@@ -76,8 +101,20 @@ public class MainWindowController implements Initializable {
     @FXML
     private ListView<String> algorithm_listViewFX;
 
+    //create array of algorithm tasks,
+    //as element is different algorithm classes that inherit AlgorithmAbstractFX
+    //add all nodes as string objects
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        speedField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    speedField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
         addAlgorithms();
         for(AlgorithmAbstractFX oneAlgorithm: algorithmArray){
             algorithm_listViewFX.getItems().add(oneAlgorithm.getName());
@@ -105,4 +142,3 @@ public class MainWindowController implements Initializable {
         return null;
     }
 }
-

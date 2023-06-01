@@ -18,6 +18,9 @@ public class AlgorithmQuickSortFX extends AlgorithmAbstractFX {
     public void quickSort(RectangleClass [] rectangle, int low, int high)  {
 
         if(low < high){
+            if(isCancelled()){
+                return;
+            }
             // pi is partitioning index, rectangle[p]
             // is now at right place
             int pi = partition(rectangle, low, high);
@@ -43,6 +46,10 @@ public class AlgorithmQuickSortFX extends AlgorithmAbstractFX {
         // Index of smaller element and indicates
         // the right position of pivot found so far
         for(int j = low; j <= high; j++){
+            if(isCancelled()){
+                return i+1;
+            }
+            isPaused();
             count++;
             // If current element is smaller than the pivot
             if(rectangle[j].lessThan(pivot)){

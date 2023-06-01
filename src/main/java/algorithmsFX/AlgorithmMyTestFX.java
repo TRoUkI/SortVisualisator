@@ -10,6 +10,10 @@ public final class AlgorithmMyTestFX extends AlgorithmAbstractFX {
         super.AlgorithmBody();
         while(!isSorted) {
             for (int i = 0; i < rectangleArray.length - 1; i++) { //swap the two elements(el) if el. i+1 less than el. i
+                if(isCancelled()){
+                    return;
+                }
+                isPaused();
                 count++;
                 if(rectangleArray[i].greaterThan(rectangleArray[i+1])){
                     swap(rectangleArray, i, i+1);
@@ -17,6 +21,10 @@ public final class AlgorithmMyTestFX extends AlgorithmAbstractFX {
             }
             isSorted = true;
             for (int i = 0; i<rectangleArray.length-1; i++) { //check if array is sorted
+                if(isCancelled()){
+                    return;
+                }
+                isPaused();
                 count++;
                 if(rectangleArray[i].greaterThan(rectangleArray[i + 1])){
                     isSorted = false;

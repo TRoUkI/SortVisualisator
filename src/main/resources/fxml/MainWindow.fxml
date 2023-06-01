@@ -13,7 +13,7 @@
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
-            <AnchorPane minHeight="100.0" prefHeight="100.0" style="-fx-background-color: #CBB279;">
+            <AnchorPane minHeight="100.0" prefHeight="100.0" style="-fx-background-color: #3F4E4F;">
                <children>
                   <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
@@ -21,7 +21,7 @@
                            <children>
                               <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="680.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="800.0">
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #A27B5C #A27B5C;">
                                        <children>
                                           <ListView fx:id="algorithm_listViewFX" layoutX="279.0" layoutY="-65.0" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="797.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-119.0" AnchorPane.topAnchor="0.0" />
                                        </children>
@@ -32,7 +32,7 @@
                         </AnchorPane>
                         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="265.0" prefHeight="102.0" prefWidth="265.0">
                            <children>
-                              <SplitPane dividerPositions="1.0" layoutX="89.0" layoutY="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <SplitPane dividerPositions="1.0" layoutX="89.0" layoutY="1.0" style="-fx-background-color: DCD7C9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <items>
                                     <AnchorPane SplitPane.resizableWithParent="false">
                                        <children>
@@ -54,7 +54,7 @@
                                                             </AnchorPane>
                                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                                <children>
-                                                                  <Button mnemonicParsing="false" text="SET" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                  <Button fx:id="set_btn" mnemonicParsing="false" onAction="#set_btn_action" text="SET" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                </children>
                                                             </AnchorPane>
                                                         </items>
@@ -67,7 +67,7 @@
                                     </AnchorPane>
                                     <AnchorPane>
                                        <children>
-                                          <Button fx:id="start_btn" defaultButton="true" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#start_btn_action" opacity="0.9" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #E1D4BB; -fx-border-color: black;" text="START SORTING" textAlignment="CENTER" textFill="#537188" wrapText="true">
+                                          <Button fx:id="start_btn" defaultButton="true" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#start_btn_action" prefHeight="100.0" prefWidth="100.0" text="START SORTING" textAlignment="CENTER" wrapText="true">
                                              <font>
                                                 <Font name="Arial Bold" size="16.0" />
                                              </font>
@@ -84,7 +84,7 @@
             </AnchorPane>
          </bottom>
          <center>
-            <AnchorPane fx:id="elementField" style="-fx-background-color: #537188;" BorderPane.alignment="CENTER" />
+            <AnchorPane fx:id="elementField" style="-fx-background-color: #DCD7C9;" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>

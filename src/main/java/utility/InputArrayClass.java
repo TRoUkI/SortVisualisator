@@ -33,7 +33,7 @@ public class InputArrayClass {
     private void shuffleInputArr() {
         Random random = new Random();
 
-        random.setSeed(1); //setSeed for control result
+//        random.setSeed(); //setSeed for control result
 
         for(int i = 0; i<shuffledInputDataArr.length; i++){
             int randomIndexForSwap = random.nextInt(shuffledInputDataArr.length);

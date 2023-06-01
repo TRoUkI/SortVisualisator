@@ -1,4 +1,33 @@
+*{
+  -fx-font-family: arial;
+  -fx-font-weight: bold;
+    -fx-font-size: 16px;
+/*
+  -fx-color: #DCD7C9 !important;
+*/
+  }
 .split-pane *.split-pane-divider{
     -fx-background-color: transparent; 
     -fx-padding: 0 ;
+}
+.button {
+  -fx-effect: dropshadow(three-pass-box, rgb(102, 77, 58), 1px, 1px, 1px, 1px );
+  -fx-border-radius: 3px;
+  -fx-border-color: #785B44;
+  -fx-border-style: solid;
+  -fx-border-width: 2px;
+  -fx-background: #967255;
+  -fx-background-color: linear-gradient(to top, #967255, #AB8261);
+}
+.button:hover {
+  -fx-color: #DCD7C6 !important;
+  -fx-background: #967266;
+  -fx-background-color: linear-gradient(to top, #967256, #AB8271);
+}
+.list-view .list-cell {
+-fx-background-color: #3F4E4F;
+ -fx-text-fill: #DCD7C9 !important;
+}
+.list-view .list-cell:selected:focused {
+-fx-background-color:  #525F60;
 }
