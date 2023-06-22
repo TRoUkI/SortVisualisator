@@ -1,8 +1,11 @@
 # SortVisualisator
 A sorting visualization app written in Java/JavaFX
 
-![image](https://github.com/TRoUkI/SortVisualisator/assets/47295089/1bd9866d-8468-4b44-8f0d-b404f61c78e1)
+![image](https://github.com/TRoUkI/SortVisualisator/assets/47295089/b580b282-5038-4e1d-bda1-358c37ebaadd)
 
+![image](https://github.com/TRoUkI/SortVisualisator/assets/47295089/602beac7-a008-4869-bff4-9b3401e17cef)
+
+![image](https://github.com/TRoUkI/SortVisualisator/assets/47295089/e65185a1-b29c-4113-88b8-e2d30bd91758)
 
 ## Instruction for creating your own algorithm:
 - Your algorithm should be added to package `src/main/java/algorithms`.
