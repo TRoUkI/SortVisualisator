@@ -1,5 +1,5 @@
-# SortVisualisator
-A sorting visualization app written in Java/JavaFX
+# Visualisation of sorting
+A sorting visualization app written in Java/JavaFX and ability to add new sorting algorithms by inherritence and modification.
 
 <img src="https://github.com/TRoUkI/SortVisualisator/assets/47295089/b580b282-5038-4e1d-bda1-358c37ebaadd" width="300">
 <img src="https://github.com/TRoUkI/SortVisualisator/assets/47295089/602beac7-a008-4869-bff4-9b3401e17cef" width="300">
